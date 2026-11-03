@@ -14,8 +14,14 @@ Our open-source projects document their contracts, failure behavior, and limits.
 
 | Project | What it does | Start here |
 | --- | --- | --- |
-| **[ImportKit](https://github.com/Altitud-Studio-S-L-U/importkit)** | A TypeScript library for CSV and JSON Lines imports, bounded preflight validation, sequential batches, checkpoints, and recovery with stable record IDs. The application owns validation rules and idempotent destination writes. | [API and recovery example](https://github.com/Altitud-Studio-S-L-U/importkit#readme) |
-| **[Self-managed API](https://github.com/Altitud-Studio-S-L-U/self-managed-api)** | Inspect API and MCP contract changes, review their effect on consumers, and validate proposed migrations locally with explicit execution and publication approvals. | [Setup and operating boundaries](https://github.com/Altitud-Studio-S-L-U/self-managed-api#readme) |
+| **[ImportKit](https://github.com/Altitud-Studio-S-L-U/importkit)** | A TypeScript library for CSV and JSON Lines imports, bounded preflight validation, sequential batches limited by record count and measured bytes, checkpoints, and recovery with stable record IDs. The application owns validation rules and idempotent destination writes. | [API and recovery example](https://github.com/Altitud-Studio-S-L-U/importkit#readme) |
+| **[Self-managed API](https://github.com/Altitud-Studio-S-L-U/self-managed-api)** | Inspect API and MCP contract changes, review their effect on consumers, and validate proposed migrations locally. Model use, test execution and draft PR publication to private destinations require separate approvals. | [Setup and operating boundaries](https://github.com/Altitud-Studio-S-L-U/self-managed-api#readme) |
+
+## Compiler tooling
+
+| Project | What it does | Start here |
+| --- | --- | --- |
+| **[IRVeil](https://github.com/Altitud-Studio-S-L-U/irveil)** | An experimental C++17 library and LLVM pass plugin for replacing selected integer additions with equivalent boolean and arithmetic expressions. Selection is explicit, expansion is bounded and configuration is deterministic. Initial support is Linux x86-64 and LLVM/Clang 18; reverse-engineering resistance is not quantified, and code generation can simplify the transformations. | [Design contract and limits](https://github.com/Altitud-Studio-S-L-U/irveil/blob/main/docs/design.md) |
 
 ## Browser integration
 
