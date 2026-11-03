@@ -32,7 +32,7 @@ Stream CSV and JSON Lines records through validation, sequential batches and loc
 
 Compare OpenAPI, MCP and supported JSON Schema contracts, inspect affected consumers, and validate proposed migrations locally. Model use, test execution and draft PR publication have separate approvals. Available from source as an SDK, CLI and local worker; GitHub publication targets private repositories.
 
-[Start from source](https://github.com/Altitud-Studio-S-L-U/self-managed-api#quick-start) · [Technical guide](https://github.com/Altitud-Studio-S-L-U/self-managed-api/blob/main/docs/technical-guide.pdf)
+[Start from source](https://github.com/Altitud-Studio-S-L-U/self-managed-api#quick-start) · [End-to-end tutorial](https://github.com/Altitud-Studio-S-L-U/self-managed-api/tree/main/dev/terminal-demo) · [Technical guide (ES)](https://github.com/Altitud-Studio-S-L-U/self-managed-api/blob/main/docs/technical-guide.pdf) · [Releases](https://github.com/Altitud-Studio-S-L-U/self-managed-api/releases)
 
 ## Developer workflows
 
@@ -40,7 +40,7 @@ Compare OpenAPI, MCP and supported JSON Schema contracts, inspect affected consu
 
 Coordinate installed Codex and Claude Code CLIs: one proposes changes to explicitly selected files, an operator-supplied command verifies them, and the other reviews the result. Git preconditions and bounded repair keep the workflow explicit. Changes remain uncommitted for human review.
 
-[Run Forge](https://github.com/Altitud-Studio-S-L-U/forge#run) · [Architecture](https://github.com/Altitud-Studio-S-L-U/forge#architecture) · [Trust model](https://github.com/Altitud-Studio-S-L-U/forge/blob/main/SECURITY.md)
+[Run the executable example](https://github.com/Altitud-Studio-S-L-U/forge/tree/main/examples/quickstart) · [CLI compatibility](https://github.com/Altitud-Studio-S-L-U/forge#cli-compatibility) · [Architecture](https://github.com/Altitud-Studio-S-L-U/forge#architecture) · [Releases](https://github.com/Altitud-Studio-S-L-U/forge/releases)
 
 ## Compiler engineering
 
