@@ -6,32 +6,64 @@
           /____\/____\_\
 ```
 
-We build software, connect systems, and make the behavior of those systems easier to inspect.
+## Software you can inspect, run and build on
 
-Our open-source projects document their contracts, failure behavior, and limits. The code and executable examples are part of the explanation.
+We are a software engineering studio based in Andorra. Our public tools cover data imports, API maintenance, AI-assisted code changes, compiler transformations and browser integrations. Each repository contains the source, operating contracts and instructions to run its checks.
 
-## Backend engineering
+## Choose a tool
 
-| Project | What it does | Start here |
+| You need to… | Project | Interface |
 | --- | --- | --- |
-| **[ImportKit](https://github.com/Altitud-Studio-S-L-U/importkit)** | A TypeScript library for CSV and JSON Lines imports, bounded preflight validation, sequential batches limited by record count and measured bytes, checkpoints, and recovery with stable record IDs. The application owns validation rules and idempotent destination writes. | [API and recovery example](https://github.com/Altitud-Studio-S-L-U/importkit#readme) |
-| **[Self-managed API](https://github.com/Altitud-Studio-S-L-U/self-managed-api)** | Inspect API and MCP contract changes, review their effect on consumers, and validate proposed migrations locally. Model use, test execution and draft PR publication to private destinations require separate approvals. | [Setup and operating boundaries](https://github.com/Altitud-Studio-S-L-U/self-managed-api#readme) |
+| Validate file records and resume interrupted imports | **[ImportKit](https://github.com/Altitud-Studio-S-L-U/importkit)** | TypeScript library · Node.js |
+| Review API changes and test consumer migrations | **[Self-managed API](https://github.com/Altitud-Studio-S-L-U/self-managed-api)** | TypeScript SDK · CLI · local worker |
+| Pair a code proposal with verification and a second AI reviewer | **[Forge](https://github.com/Altitud-Studio-S-L-U/forge)** | Node.js CLI · Codex + Claude Code |
+| Transform selected arithmetic during native compilation | **[IRVeil](https://github.com/Altitud-Studio-S-L-U/irveil)** | C++ library · LLVM pass plugin |
+| Manage listings from a Wallapop browser session | **[Wallapop Tools](https://github.com/Altitud-Studio-S-L-U/wallapop-tools)** | JavaScript · Manifest V3 extension |
 
-## Compiler tooling
+## Data and API integrations
 
-| Project | What it does | Start here |
-| --- | --- | --- |
-| **[IRVeil](https://github.com/Altitud-Studio-S-L-U/irveil)** | An experimental C++17 library and LLVM pass plugin for replacing selected integer additions with equivalent boolean and arithmetic expressions. Selection is explicit, expansion is bounded and configuration is deterministic. Initial support is Linux x86-64 and LLVM/Clang 18; reverse-engineering resistance is not quantified, and code generation can simplify the transformations. | [Design contract and limits](https://github.com/Altitud-Studio-S-L-U/irveil/blob/main/docs/design.md) |
+### ImportKit
 
-## Browser integration
+Stream CSV and JSON Lines records through validation, sequential batches and local checkpoints. Batches can be limited by record count and measured bytes. Recovery preserves record IDs so the destination can deduplicate replayed writes; the application supplies its validation and persistence logic.
 
-**[Wallapop Tools](https://github.com/Altitud-Studio-S-L-U/wallapop-tools)** is a Manifest V3 extension for listing actions, price changes, scheduling, and CSV export. It demonstrates session handling, asynchronous operations, and provider integration. It is independent of Wallapop and relies on the web application's endpoints; the [README](https://github.com/Altitud-Studio-S-L-U/wallapop-tools#readme) describes the operational limits.
+[Install from npm](https://www.npmjs.com/package/@altitud-studio/importkit) · [Run the recovery example](https://github.com/Altitud-Studio-S-L-U/importkit/blob/main/examples/recovery.mjs) · [API and resource limits](https://github.com/Altitud-Studio-S-L-U/importkit#limits-and-backpressure)
 
-## Explore or contribute
+### Self-managed API
 
-- Run the examples and checks documented in each repository.
-- Use synthetic data in bug reports. Keep credentials and customer files out of public issues.
-- Propose changes through pull requests; the maintainer controls integration into protected branches.
-- Read each project's license and security guidance before embedding it.
+Compare OpenAPI, MCP and supported JSON Schema contracts, inspect affected consumers, and validate proposed migrations locally. Model use, test execution and draft PR publication have separate approvals. Available from source as an SDK, CLI and local worker; GitHub publication targets private repositories.
 
-[Altitud Studio](https://altitudstudio.ad/en/) · [Open-source repositories](https://github.com/orgs/Altitud-Studio-S-L-U/repositories) · [Contact the studio](https://altitudstudio.ad/en/#contact)
+[Start from source](https://github.com/Altitud-Studio-S-L-U/self-managed-api#quick-start) · [Technical guide](https://github.com/Altitud-Studio-S-L-U/self-managed-api/blob/main/docs/technical-guide.pdf)
+
+## Developer workflows
+
+### Forge
+
+Coordinate installed Codex and Claude Code CLIs: one proposes changes to explicitly selected files, an operator-supplied command verifies them, and the other reviews the result. Git preconditions and bounded repair keep the workflow explicit. Changes remain uncommitted for human review.
+
+[Run Forge](https://github.com/Altitud-Studio-S-L-U/forge#run) · [Architecture](https://github.com/Altitud-Studio-S-L-U/forge#architecture) · [Trust model](https://github.com/Altitud-Studio-S-L-U/forge/blob/main/SECURITY.md)
+
+## Compiler engineering
+
+### IRVeil
+
+Replace integer additions in explicitly marked C/C++ functions with equivalent boolean and arithmetic expressions. The LLVM 18 plugin provides deterministic configuration and bounded expansion on Linux x86-64. Its Ghidra and LLVM evaluation records both surviving transformations and recoverable algebra; it does not establish resistance to a skilled analyst.
+
+[Build and integrate](https://github.com/Altitud-Studio-S-L-U/irveil#build) · [Transformation contract](https://github.com/Altitud-Studio-S-L-U/irveil/blob/main/docs/design.md) · [Ghidra and LLVM evaluation](https://github.com/Altitud-Studio-S-L-U/irveil/blob/main/docs/re-evaluation.md)
+
+## Browser integrations
+
+### Wallapop Tools
+
+Reactivate listings, adjust prices, schedule actions and export CSV from an existing browser session. The extension coordinates account checks and sequential writes in its service worker. It is independent of Wallapop and uses the web application's unofficial endpoints; browser integration checks use controlled API fixtures.
+
+[Install the latest release](https://github.com/Altitud-Studio-S-L-U/wallapop-tools/releases/latest) · [Usage and operating limits](https://github.com/Altitud-Studio-S-L-U/wallapop-tools#use) · [Data and privacy](https://github.com/Altitud-Studio-S-L-U/wallapop-tools/blob/main/PRIVACY.md)
+
+## Explore and contribute
+
+The five tools above are MIT licensed. Their repositories contain installation steps, examples and validation commands. This [`.github` repository](https://github.com/Altitud-Studio-S-L-U/.github) maintains the organization profile.
+
+- Discuss changes in the relevant repository and submit a pull request.
+- Include a reproducible example with synthetic data and the checks you ran.
+- Follow each project's security policy for confidential vulnerability reports.
+
+[Altitud Studio](https://altitudstudio.ad/en/) · [Public repositories](https://github.com/orgs/Altitud-Studio-S-L-U/repositories?type=public) · [Contact the studio](https://altitudstudio.ad/en/#contact)
