@@ -24,9 +24,9 @@ We are a software engineering studio based in Andorra. Our public tools cover da
 
 ### ImportKit
 
-Stream CSV and JSON Lines records through validation, sequential batches and local checkpoints. Batches can be limited by record count and measured bytes. Recovery preserves record IDs so the destination can deduplicate replayed writes; the application supplies its validation and persistence logic.
+Validate CSV and JSON Lines before writing. Limit each import batch by record count and optionally by measured bytes. Stable record IDs let a destination deduplicate writes after a retry. An application can also save the checkpoint and imported records in the same database transaction.
 
-[Install from npm](https://www.npmjs.com/package/@altitud-studio/importkit) · [Run the recovery example](https://github.com/Altitud-Studio-S-L-U/importkit/blob/main/examples/recovery.mjs) · [API and resource limits](https://github.com/Altitud-Studio-S-L-U/importkit#limits-and-backpressure)
+[Install from npm](https://www.npmjs.com/package/@altitud-studio/importkit) · [Run the recovery examples](https://github.com/Altitud-Studio-S-L-U/importkit#examples) · [API reference](https://github.com/Altitud-Studio-S-L-U/importkit/blob/main/docs/api.md) · [Resource limits](https://github.com/Altitud-Studio-S-L-U/importkit/blob/main/docs/limits.md)
 
 ### Self-managed API
 
