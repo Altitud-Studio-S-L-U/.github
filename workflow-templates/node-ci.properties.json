@@ -1,0 +1,6 @@
+{
+  "name": "Altitud Node.js CI",
+  "description": "npm ci, registry signature audit and npm run check on Linux, macOS and Windows with Node.js 24 and 26. Actions pinned by commit, read-only token.",
+  "categories": ["JavaScript", "TypeScript", "Continuous integration"],
+  "filePatterns": ["^package.json$"]
+}

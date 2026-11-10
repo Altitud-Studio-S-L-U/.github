@@ -1,0 +1,5 @@
+{
+  "name": "Altitud OpenSSF Scorecard",
+  "description": "Publishes OpenSSF Scorecard results and uploads them to code scanning. Requires the ossf/scorecard-action pattern in the repository's allowed actions.",
+  "categories": ["Code scanning"]
+}

@@ -1,0 +1,5 @@
+{
+  "name": "Altitud CodeQL",
+  "description": "CodeQL security-extended queries on every pull request, on main and weekly. Add the repository's languages to the matrix.",
+  "categories": ["Code scanning", "JavaScript", "TypeScript"]
+}
