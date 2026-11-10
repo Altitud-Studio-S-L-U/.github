@@ -1,0 +1,45 @@
+name: Bug report
+description: A tool behaves differently from its documentation.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        To report a vulnerability, use **Report a vulnerability** on this repository's Security tab instead of an issue.
+        Use synthetic data. Do not paste credentials, tokens, customer files or private source code.
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+      description: The release tag, npm version or commit you ran.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Operating system and architecture, and the runtime and toolchain versions the tool uses (for example Node.js, pnpm, Clang/LLVM, Docker, Chrome).
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: The smallest command, input or code that shows the problem.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What should have happened, with a link to the documentation that says so when there is one.
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: What happened instead, with the exact error or output.
+    validations:
+      required: true
