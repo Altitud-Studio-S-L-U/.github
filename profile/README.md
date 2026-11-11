@@ -1,36 +1,34 @@
 # Altitud Studio
 
-Software engineering studio in Andorra. We build backend and developer tools around one rule: a change that reaches a production system should be bounded, checked against evidence and approved before it has side effects.
+Software engineering studio based in Andorra. We build software, integrations and developer tools, and publish reusable parts of that work as open source.
 
-## Tools
+[Website](https://altitudstudio.ad/en/) · [Projects and engineering cases](https://altitudstudio.ad/en/open-source/) · [Work with us](https://altitudstudio.ad/en/#contact)
 
-| Problem | Project | Status |
+## Data libraries
+
+| Project | What it does | Get started |
 | --- | --- | --- |
-| Resume a large CSV or JSON Lines import after a crash from the last confirmed batch, with record IDs that stay stable across retries | **[ImportKit](https://github.com/Altitud-Studio-S-L-U/importkit)**<br>TypeScript library | 1.0 on [npm](https://www.npmjs.com/package/@altitud-studio/importkit)<br>![npm downloads](https://img.shields.io/npm/dm/@altitud-studio/importkit?label=downloads) |
-| Audit a website against search rules that each cite a primary source, then hand every failure to a coding agent with checks that verify the fix | **[Altimeter](https://github.com/Altitud-Studio-S-L-U/altimeter)**<br>Node.js CLI | [0.1](https://github.com/Altitud-Studio-S-L-U/altimeter/releases/latest) with build provenance |
-| See which consumer calls an API or MCP contract change affects, and test the migration in Docker before a draft pull request exists | **[Self-managed API](https://github.com/Altitud-Studio-S-L-U/self-managed-api)**<br>SDK, CLI and local worker | [0.1](https://github.com/Altitud-Studio-S-L-U/self-managed-api/releases/latest), from source |
-| Let one coding agent propose a change and another review it, while your own command decides whether it passes | **[Forge](https://github.com/Altitud-Studio-S-L-U/forge)**<br>Node.js CLI | [0.1](https://github.com/Altitud-Studio-S-L-U/forge/releases/latest), from source |
-| Replace integer additions in marked C and C++ functions with equivalent mixed boolean-arithmetic expressions at compile time | **[IRVeil](https://github.com/Altitud-Studio-S-L-U/irveil)**<br>LLVM 18 pass plugin | [0.2 pre-release](https://github.com/Altitud-Studio-S-L-U/irveil/releases) |
+| [ImportKit](https://github.com/Altitud-Studio-S-L-U/importkit) | Streams CSV and JSONL into application-defined destinations, with validation, bounded batches, stable record IDs and checkpoint recovery. | [npm · v1.0.0](https://www.npmjs.com/package/@altitud-studio/importkit/v/1.0.0) · Node.js |
+| [wildcsv](https://github.com/Altitud-Studio-S-L-U/wildcsv) | Reads CSV with dialect and encoding detection, configurable limits and adaptive parallel parsing. Uses only the Go standard library. | [Go module · v0.1.0](https://pkg.go.dev/github.com/Altitud-Studio-S-L-U/wildcsv@v0.1.0) |
+| [ImportKit WASM](https://github.com/Altitud-Studio-S-L-U/importkit-wasm) | Adds an optional Rust/WebAssembly CSV reader to ImportKit 1.x, preserving valid records and stable IDs. | [Build from source](https://github.com/Altitud-Studio-S-L-U/importkit-wasm#install) · Node.js |
 
-## How the tools are built
+ImportKit's default delivery is at least once: destination idempotency belongs to the application. wildcsv's detection is heuristic and configurable. ImportKit WASM is not published on npm, and error precedence can differ from the standard reader when a file contains multiple errors. Performance results are tied to the documented workloads and environments.
 
-- **Explicit limits.** Inputs, batches, context and deadlines have documented bounds. ImportKit [limits](https://github.com/Altitud-Studio-S-L-U/importkit/blob/main/docs/limits.md) the source, each record and each batch; Forge sends at most twelve selected files and 256 KiB of context to a model; IRVeil rewrites at most 256 additions per function by default (`max-adds`), each with at most five extra instructions.
-- **Evidence before opinions.** A model's judgement never outranks a check. Altimeter drops any model claim that does not quote the collected evidence word for word; Forge never lets a review override a failed verification command; IRVeil's [evaluation](https://github.com/Altitud-Studio-S-L-U/irveil/blob/main/docs/re-evaluation.md) reports what Ghidra and LLVM still recover.
-- **Approval before side effects.** Self-managed API asks separately before it uses a model, runs tests or publishes a draft pull request. Forge never commits, pushes or merges.
-- **The same checks everywhere.** In each repository above, every pull request is built, tested and scanned by CodeQL in GitHub Actions. Actions are pinned by commit and kept current by Dependabot, OpenSSF Scorecard publishes the supply-chain checks, and vulnerabilities are reported privately through GitHub.
+## Developer and browser tools
 
-## Engineering notes
+| Project | What it does | Availability |
+| --- | --- | --- |
+| [Altimeter](https://github.com/Altitud-Studio-S-L-U/altimeter) | Audits technical SEO with evidence-linked deterministic checks, reports and optional AI analysis. Its score summarises checks, not search rankings. | [CLI · GitHub release v0.1.0](https://github.com/Altitud-Studio-S-L-U/altimeter/releases/tag/v0.1.0) |
+| [self-managed-api](https://github.com/Altitud-Studio-S-L-U/self-managed-api) | Compares API contracts, inspects consumers and tests migration recipes locally, with separate approvals for model use, execution and draft PRs to private repositories. | SDK, CLI and local worker · From source |
+| [Forge](https://github.com/Altitud-Studio-S-L-U/forge) | Coordinates Codex and Claude Code over selected files: proposal, operator-defined check, independent review and one repair round. Changes remain uncommitted. | CLI · From source |
+| [Wallapop Tools](https://github.com/Altitud-Studio-S-L-U/wallapop-tools) | Manages listings through a Chromium extension: reactivation, price changes, scheduling and CSV export. Independent of Wallapop; depends on an unofficial web API. | [Manual installation](https://github.com/Altitud-Studio-S-L-U/wallapop-tools/releases/latest) |
 
-Design documents and measurements, including results that did not go our way:
+## Compiler research
 
-- **ImportKit** · [Recovery](https://github.com/Altitud-Studio-S-L-U/importkit/blob/main/docs/recovery.md): at-least-once delivery, checkpoints in the same transaction as the records, and a PostgreSQL checkpoint store. [Performance](https://github.com/Altitud-Studio-S-L-U/importkit/blob/main/docs/performance.md): time, reads and memory measured on large files.
-- **Altimeter** · [How Altimeter audits a site](https://github.com/Altitud-Studio-S-L-U/altimeter/blob/main/docs/methodology.md): five stages, each recording what it could not evaluate, so a report states how much of the catalog it covered.
-- **IRVeil** · [Transformation contract](https://github.com/Altitud-Studio-S-L-U/irveil/blob/main/docs/design.md) and [reverse-engineering evaluation](https://github.com/Altitud-Studio-S-L-U/irveil/blob/main/docs/re-evaluation.md): the expressions survive native code generation and remain algebraically recoverable in Ghidra's output.
-- **Forge** · [Architecture](https://github.com/Altitud-Studio-S-L-U/forge#architecture): a bounded state machine with one adapter per provider CLI and no provider SDK in the core.
-- **Self-managed API** · [Technical guide](https://github.com/Altitud-Studio-S-L-U/self-managed-api/blob/main/docs/technical-guide.pdf) (Spanish): approvals, Docker validation, native services and signed updates.
+[**IRVeil**](https://github.com/Altitud-Studio-S-L-U/irveil) is an experimental C++17 library and LLVM 18 plugin for transforming selected integer additions into equivalent boolean and arithmetic expressions. The v0.2 pre-release targets Linux x86-64. Its [LLVM and Ghidra evaluation](https://github.com/Altitud-Studio-S-L-U/irveil/blob/main/docs/re-evaluation.md) documents recoverable algebra and does not establish resistance to reverse engineering.
 
-## Contribute
+## Documentation and contributions
 
-Each repository's `CONTRIBUTING.md` lists the checks to run. Open an issue with a reproduction on synthetic data, or a pull request with the results of the checks you ran. Report vulnerabilities privately with **Report a vulnerability** on the repository's Security tab.
+Every project above is MIT-licensed. Installation instructions, supported environments and operating limits live in each repository. Start with the README, reproduce the relevant checks and open an issue or pull request with a concrete example.
 
-[altitudstudio.ad](https://altitudstudio.ad/en/) · [Open source](https://altitudstudio.ad/en/open-source/) · [Contact](https://altitudstudio.ad/en/#contact)
+For security reports, follow the affected repository's `SECURITY.md` or use its private vulnerability reporting channel where available.
