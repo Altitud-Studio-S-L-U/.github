@@ -25,7 +25,7 @@ ImportKit's default delivery is at least once: destination idempotency belongs t
 
 ## Compiler research
 
-[**IRVeil**](https://github.com/Altitud-Studio-S-L-U/irveil) lets C and C++ developers mark individual functions for transformation with LLVM 18 on Linux x86-64. The [v0.2.1 pre-release](https://github.com/Altitud-Studio-S-L-U/irveil/releases/tag/v0.2.1) rewrites integer additions. The [main branch](https://github.com/Altitud-Studio-S-L-U/irveil/blob/main/docs/design.md) adds opt-in transformations for control flow, integer constants and strings, with configurable limits on code growth. Its [LLVM and Ghidra evaluation](https://github.com/Altitud-Studio-S-L-U/irveil/blob/main/docs/re-evaluation.md) compares program outputs, measures runtime and shows which changes remain visible in optimized binaries.
+[**IRVeil**](https://github.com/Altitud-Studio-S-L-U/irveil) lets C and C++ developers mark individual functions for transformation with LLVM 18 on Linux x86-64. The [v0.2.1 pre-release](https://github.com/Altitud-Studio-S-L-U/irveil/releases/tag/v0.2.1) rewrites integer additions. The [main branch](https://github.com/Altitud-Studio-S-L-U/irveil/blob/main/docs/design.md) adds opt-in transformations for control flow, integer constants and strings, with configurable limits on LLVM IR growth. Its [LLVM and Ghidra evaluation](https://github.com/Altitud-Studio-S-L-U/irveil/blob/main/docs/re-evaluation.md) compares program outputs, measures runtime and shows which changes remain visible in optimized binaries.
 
 ## Documentation and contributions
 
