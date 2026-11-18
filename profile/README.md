@@ -21,7 +21,10 @@ ImportKit's default delivery is at least once: destination idempotency belongs t
 | [Altimeter](https://github.com/Altitud-Studio-S-L-U/altimeter) | Audits technical SEO with evidence-linked deterministic checks, reports and optional AI analysis. Its score summarises checks, not search rankings. | [CLI · GitHub release v0.1.0](https://github.com/Altitud-Studio-S-L-U/altimeter/releases/tag/v0.1.0) |
 | [self-managed-api](https://github.com/Altitud-Studio-S-L-U/self-managed-api) | Compares API contracts, inspects consumers and tests migration recipes locally, with separate approvals for model use, execution and draft PRs to private repositories. | SDK, CLI and local worker · From source |
 | [Forge](https://github.com/Altitud-Studio-S-L-U/forge) | Coordinates Codex and Claude Code over selected files: proposal, operator-defined check, independent review and one repair round. Changes remain uncommitted. | CLI · From source |
+| [SABRE Factory](https://github.com/Altitud-Studio-S-L-U/sabre-factory) | Self-hosted software factory with a web console, typed specialist flows, budgets and isolated execution. | [Experimental 0.1.0 source preview](https://github.com/Altitud-Studio-S-L-U/sabre-factory/releases/tag/v0.1.0) |
 | [Wallapop Tools](https://github.com/Altitud-Studio-S-L-U/wallapop-tools) | Manages listings through a Chromium extension: reactivation, price changes, scheduling and CSV export. Independent of Wallapop; depends on an unofficial web API. | [Manual installation](https://github.com/Altitud-Studio-S-L-U/wallapop-tools/releases/latest) |
+
+SABRE Factory requires a configured model provider. Installation and recovery have been checked on Windows with Docker Desktop; Linux/macOS and real pull-request delivery remain unverified. A read-only audit has completed. See its README and release notes for limits and known advisories.
 
 ## Compiler research
 
